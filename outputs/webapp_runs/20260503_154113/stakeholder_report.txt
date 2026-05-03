@@ -1,0 +1,53 @@
+PRODUCT INTELLIGENCE REPORT — Customer Review Sentiment Analysis
+==============================================================
+
+EXECUTIVE SUMMARY
+------------------
+Reviews analyzed:  99
+Reviews with insights: 76  (76.8%)
+Average satisfaction:  72.8%
+Overall health:  POSITIVE ✅
+
+==============================================================
+SATISFACTION RANKING  (best → worst)
+==============================================================
+  DESIGN AND AESTHETICS          83.3%  |████████████████    |  (31 mentions)
+  CONTENT QUALITY                81.0%  |████████████████    |  (44 mentions)
+  FUNCTIONALITY                  80.0%  |████████████████    |  (6 mentions)
+  PRODUCT QUALITY                78.6%  |███████████████     |  (30 mentions)
+  VALUE FOR MONEY                59.2%  |███████████         |  (50 mentions)
+  CUSTOMER EXPERIENCE            54.5%  |██████████          |  (11 mentions)
+
+==============================================================
+KEY FINDINGS
+==============================================================
+
+STRENGTH — DESIGN AND AESTHETICS  (83.3% satisfaction)
+Customers consistently respond positively to design and aesthetics across
+31 mentions. Protect this in future versions
+and use it as a marketing differentiator.
+  Positive language: time, good, like, place, great, come
+
+PRIORITY FIX — CUSTOMER EXPERIENCE  (54.5% satisfaction)
+46% of customers who mention customer experience
+are dissatisfied. This is your most urgent improvement area.
+  Complaint language: watch, wait, band, nicole, like, store
+
+==============================================================
+PRIORITIZED ACTION LIST
+==============================================================
+  1. [⚠️  MONITOR]  Customer Experience           54.5%  (11 mentions)
+  2. [⚠️  MONITOR]  Value For Money               59.2%  (50 mentions)
+  3. [✅ MAINTAIN]  Product Quality               78.6%  (30 mentions)
+  4. [✅ MAINTAIN]  Functionality                 80.0%  (6 mentions)
+  5. [✅ MAINTAIN]  Content Quality               81.0%  (44 mentions)
+  6. [✅ MAINTAIN]  Design And Aesthetics         83.3%  (31 mentions)
+
+==============================================================
+METHODOLOGY NOTE
+==============================================================
+Aspect detection: cross-encoder/nli-MiniLM2-L6-H768  (zero-shot NLI)
+Sentiment model:  distilbert-base-uncased-finetuned-sst-2-english
+Aspect threshold: confidence ≥ 0.50 required for detection
+Coverage:         76/99 reviews (76.8%)
+==============================================================

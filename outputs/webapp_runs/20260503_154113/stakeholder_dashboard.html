@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Intelligence Dashboard</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+      line-height: 1.6;
+  }
+  .page { max-width: 980px; margin: 0 auto; padding: 36px 20px; }
+  .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 32px;
+  }
+  .stat-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .stat-number { font-size: 30px; font-weight: 800; }
+  .stat-label  { font-size: 12px; color: #6b7280; margin-top: 4px; }
+  h2 { color: #111827; margin-bottom: 20px; font-size: 18px; }
+  @media (max-width: 640px) {
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── Header ── -->
+  <div style="background:linear-gradient(135deg,#0f172a 0%,#1d4ed8 100%);
+              color:white;border-radius:16px;padding:38px 40px;
+              margin-bottom:30px;text-align:center">
+      <div style="font-size:11px;letter-spacing:0.15em;text-transform:uppercase;
+                  opacity:0.7;margin-bottom:10px">NLP Pipeline Output</div>
+      <h1 style="font-size:26px;font-weight:800;margin-bottom:8px">
+          📊 Product Intelligence Dashboard
+      </h1>
+      <p style="opacity:0.8;font-size:14px">
+          Customer Review Analysis — Aspect-Based Sentiment Pipeline
+      </p>
+      <p style="opacity:0.55;font-size:12px;margin-top:6px">
+          Preprocessing → Aspect Extraction → Sentiment Analysis → Aggregation
+      </p>
+  </div>
+
+  <!-- ── Overview Stats ── -->
+  <div class="stat-grid">
+      <div class="stat-card">
+          <div class="stat-number" style="color:#1d4ed8">99</div>
+          <div class="stat-label">Reviews Analyzed</div>
+      </div>
+      <div class="stat-card">
+          <div class="stat-number" style="color:#7c3aed">76</div>
+          <div class="stat-label">With Aspects Found</div>
+      </div>
+      <div class="stat-card">
+          <div class="stat-number" style="color:#d97706">172</div>
+          <div class="stat-label">Aspect Mentions</div>
+      </div>
+      <div class="stat-card">
+          <div class="stat-number"
+               style="color:#16a34a">
+              73%
+          </div>
+          <div class="stat-label">Avg Satisfaction</div>
+      </div>
+  </div>
+
+  <!-- ── Priority Actions ── -->
+  <h2>🚨 Priority Actions for Product Team</h2>
+  
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:32px">
+        <div style="background:#fffbeb;border:1px solid #d97706;
+                    border-radius:12px;padding:20px">
+            <h4 style="color:#b45309;margin:0 0 12px 0;font-size:14px;
+                       text-transform:uppercase;letter-spacing:0.05em">
+                ⚡ Fix First — Lowest Satisfaction
+            </h4>
+            <div style="margin:8px 0"><strong style="color:#374151">Customer Experience</strong> — <strong style="color:#dc2626">54%</strong> satisfaction across 11 mentions</div><div style="margin:8px 0"><strong style="color:#374151">Value For Money</strong> — <strong style="color:#dc2626">59%</strong> satisfaction across 50 mentions</div>
+        </div>
+        <div style="background:#f0fdf4;border:1px solid #16a34a;
+                    border-radius:12px;padding:20px">
+            <h4 style="color:#15803d;margin:0 0 12px 0;font-size:14px;
+                       text-transform:uppercase;letter-spacing:0.05em">
+                💪 Protect Your Strengths
+            </h4>
+            <div style="margin:8px 0"><strong style="color:#374151">Design And Aesthetics</strong> — <strong style="color:#16a34a">83%</strong> satisfaction — promote this in marketing</div><div style="margin:8px 0"><strong style="color:#374151">Content Quality</strong> — <strong style="color:#16a34a">81%</strong> satisfaction — promote this in marketing</div>
+        </div>
+    </div>
+
+  <!-- ── Aspect Cards ── -->
+  <h2>📋 Aspect-by-Aspect Breakdown</h2>
+  
+    <div style="background:#f0fdf4;border:1px solid #16a34a;
+                border-radius:14px;padding:26px;margin-bottom:24px;
+                box-shadow:0 1px 6px rgba(0,0,0,0.06)">
+
+        <!-- Header row: aspect name left, big score right -->
+        <div style="display:flex;justify-content:space-between;
+                    align-items:flex-start;margin-bottom:18px">
+            <div>
+                <h3 style="margin:0 0 4px 0;color:#111827;font-size:17px;
+                           text-transform:capitalize;letter-spacing:0.01em">
+                    design and aesthetics
+                </h3>
+                <div style="font-size:12px;color:#6b7280">31 customer mentions</div>
+            </div>
+            <div style="text-align:center;min-width:80px">
+                <div style="font-size:38px;font-weight:800;color:#16a34a;
+                            line-height:1">83%</div>
+                <div style="font-size:10px;color:#6b7280;margin-top:2px;
+                            text-transform:uppercase;letter-spacing:0.05em">
+                    satisfaction
+                </div>
+            </div>
+        </div>
+
+        <!-- Sentiment breakdown bar -->
+        <div style="margin-bottom:18px">
+            <div style="font-size:11px;color:#6b7280;margin-bottom:5px;
+                        text-transform:uppercase;letter-spacing:0.04em">
+                Sentiment Breakdown
+            </div>
+            <div style="display:flex;height:10px;border-radius:5px;
+                        overflow:hidden;background:#e5e7eb">
+                <div style="width:83.3%;background:#16a34a;
+                            transition:width 0.6s ease"></div>
+                <div style="width:16.7%;background:#dc2626;
+                            transition:width 0.6s ease"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;
+                        font-size:11px;color:#6b7280;margin-top:5px">
+                <span>✅ 25 positive &nbsp;(83%)</span>
+                <span>❌ 5 negative &nbsp;(17%)</span>
+                <span>➖ 1 neutral</span>
+            </div>
+        </div>
+
+        <!-- Positive vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#15803d;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                💚 Words used positively
+            </div>
+            <div style="line-height:2"><span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">time <strong>(16)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">good <strong>(14)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">like <strong>(13)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">place <strong>(13)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">great <strong>(13)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">come <strong>(12)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">feel <strong>(11)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">would <strong>(11)</strong></span></div>
+        </div>
+
+        <!-- Negative vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#b91c1c;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                🔴 Words used negatively
+            </div>
+            <div style="line-height:2"><span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">nail <strong>(10)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">place <strong>(6)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">would <strong>(5)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">look <strong>(4)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">like <strong>(4)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">store <strong>(4)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">sushi <strong>(4)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">food <strong>(4)</strong></span></div>
+        </div>
+
+        <!-- Customer quotes -->
+        <div>
+            <div style="font-size:11px;font-weight:700;color:#374151;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px">
+                💬 Customer voice
+            </div>
+            <blockquote style="background:#f0fdf4;border-left:3px solid #16a34a;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+            <blockquote style="background:#fef2f2;border-left:3px solid #dc2626;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+        </div>
+    </div>
+    <div style="background:#f0fdf4;border:1px solid #16a34a;
+                border-radius:14px;padding:26px;margin-bottom:24px;
+                box-shadow:0 1px 6px rgba(0,0,0,0.06)">
+
+        <!-- Header row: aspect name left, big score right -->
+        <div style="display:flex;justify-content:space-between;
+                    align-items:flex-start;margin-bottom:18px">
+            <div>
+                <h3 style="margin:0 0 4px 0;color:#111827;font-size:17px;
+                           text-transform:capitalize;letter-spacing:0.01em">
+                    content quality
+                </h3>
+                <div style="font-size:12px;color:#6b7280">44 customer mentions</div>
+            </div>
+            <div style="text-align:center;min-width:80px">
+                <div style="font-size:38px;font-weight:800;color:#16a34a;
+                            line-height:1">81%</div>
+                <div style="font-size:10px;color:#6b7280;margin-top:2px;
+                            text-transform:uppercase;letter-spacing:0.05em">
+                    satisfaction
+                </div>
+            </div>
+        </div>
+
+        <!-- Sentiment breakdown bar -->
+        <div style="margin-bottom:18px">
+            <div style="font-size:11px;color:#6b7280;margin-bottom:5px;
+                        text-transform:uppercase;letter-spacing:0.04em">
+                Sentiment Breakdown
+            </div>
+            <div style="display:flex;height:10px;border-radius:5px;
+                        overflow:hidden;background:#e5e7eb">
+                <div style="width:81.0%;background:#16a34a;
+                            transition:width 0.6s ease"></div>
+                <div style="width:19.0%;background:#dc2626;
+                            transition:width 0.6s ease"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;
+                        font-size:11px;color:#6b7280;margin-top:5px">
+                <span>✅ 34 positive &nbsp;(81%)</span>
+                <span>❌ 8 negative &nbsp;(19%)</span>
+                <span>➖ 2 neutral</span>
+            </div>
+        </div>
+
+        <!-- Positive vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#15803d;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                💚 Words used positively
+            </div>
+            <div style="line-height:2"><span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">place <strong>(26)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">like <strong>(24)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">also <strong>(23)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">great <strong>(17)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">good <strong>(17)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">love <strong>(17)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">show <strong>(15)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">time <strong>(15)</strong></span></div>
+        </div>
+
+        <!-- Negative vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#b91c1c;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                🔴 Words used negatively
+            </div>
+            <div style="line-height:2"><span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">time <strong>(8)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">place <strong>(8)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">want <strong>(8)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">never <strong>(7)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">make <strong>(7)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">like <strong>(7)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">leave <strong>(7)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">call <strong>(6)</strong></span></div>
+        </div>
+
+        <!-- Customer quotes -->
+        <div>
+            <div style="font-size:11px;font-weight:700;color:#374151;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px">
+                💬 Customer voice
+            </div>
+            <blockquote style="background:#f0fdf4;border-left:3px solid #16a34a;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+            <blockquote style="background:#fef2f2;border-left:3px solid #dc2626;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+        </div>
+    </div>
+    <div style="background:#f0fdf4;border:1px solid #16a34a;
+                border-radius:14px;padding:26px;margin-bottom:24px;
+                box-shadow:0 1px 6px rgba(0,0,0,0.06)">
+
+        <!-- Header row: aspect name left, big score right -->
+        <div style="display:flex;justify-content:space-between;
+                    align-items:flex-start;margin-bottom:18px">
+            <div>
+                <h3 style="margin:0 0 4px 0;color:#111827;font-size:17px;
+                           text-transform:capitalize;letter-spacing:0.01em">
+                    functionality
+                </h3>
+                <div style="font-size:12px;color:#6b7280">6 customer mentions</div>
+            </div>
+            <div style="text-align:center;min-width:80px">
+                <div style="font-size:38px;font-weight:800;color:#16a34a;
+                            line-height:1">80%</div>
+                <div style="font-size:10px;color:#6b7280;margin-top:2px;
+                            text-transform:uppercase;letter-spacing:0.05em">
+                    satisfaction
+                </div>
+            </div>
+        </div>
+
+        <!-- Sentiment breakdown bar -->
+        <div style="margin-bottom:18px">
+            <div style="font-size:11px;color:#6b7280;margin-bottom:5px;
+                        text-transform:uppercase;letter-spacing:0.04em">
+                Sentiment Breakdown
+            </div>
+            <div style="display:flex;height:10px;border-radius:5px;
+                        overflow:hidden;background:#e5e7eb">
+                <div style="width:80.0%;background:#16a34a;
+                            transition:width 0.6s ease"></div>
+                <div style="width:20.0%;background:#dc2626;
+                            transition:width 0.6s ease"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;
+                        font-size:11px;color:#6b7280;margin-top:5px">
+                <span>✅ 4 positive &nbsp;(80%)</span>
+                <span>❌ 1 negative &nbsp;(20%)</span>
+                <span>➖ 1 neutral</span>
+            </div>
+        </div>
+
+        <!-- Positive vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#15803d;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                💚 Words used positively
+            </div>
+            <div style="line-height:2"><span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">time <strong>(4)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">little <strong>(4)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">breakfast <strong>(4)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">also <strong>(4)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">like <strong>(3)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">thing <strong>(3)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">around <strong>(3)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">easy <strong>(3)</strong></span></div>
+        </div>
+
+        <!-- Negative vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#b91c1c;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                🔴 Words used negatively
+            </div>
+            <div style="line-height:2"><span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">lifetime <strong>(5)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">work <strong>(2)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">free <strong>(2)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">class <strong>(2)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">want <strong>(2)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">fitness <strong>(1)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">bomb <strong>(1)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">know <strong>(1)</strong></span></div>
+        </div>
+
+        <!-- Customer quotes -->
+        <div>
+            <div style="font-size:11px;font-weight:700;color:#374151;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px">
+                💬 Customer voice
+            </div>
+            <blockquote style="background:#f0fdf4;border-left:3px solid #16a34a;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+            <blockquote style="background:#fef2f2;border-left:3px solid #dc2626;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+        </div>
+    </div>
+    <div style="background:#f0fdf4;border:1px solid #16a34a;
+                border-radius:14px;padding:26px;margin-bottom:24px;
+                box-shadow:0 1px 6px rgba(0,0,0,0.06)">
+
+        <!-- Header row: aspect name left, big score right -->
+        <div style="display:flex;justify-content:space-between;
+                    align-items:flex-start;margin-bottom:18px">
+            <div>
+                <h3 style="margin:0 0 4px 0;color:#111827;font-size:17px;
+                           text-transform:capitalize;letter-spacing:0.01em">
+                    product quality
+                </h3>
+                <div style="font-size:12px;color:#6b7280">30 customer mentions</div>
+            </div>
+            <div style="text-align:center;min-width:80px">
+                <div style="font-size:38px;font-weight:800;color:#16a34a;
+                            line-height:1">79%</div>
+                <div style="font-size:10px;color:#6b7280;margin-top:2px;
+                            text-transform:uppercase;letter-spacing:0.05em">
+                    satisfaction
+                </div>
+            </div>
+        </div>
+
+        <!-- Sentiment breakdown bar -->
+        <div style="margin-bottom:18px">
+            <div style="font-size:11px;color:#6b7280;margin-bottom:5px;
+                        text-transform:uppercase;letter-spacing:0.04em">
+                Sentiment Breakdown
+            </div>
+            <div style="display:flex;height:10px;border-radius:5px;
+                        overflow:hidden;background:#e5e7eb">
+                <div style="width:78.6%;background:#16a34a;
+                            transition:width 0.6s ease"></div>
+                <div style="width:21.4%;background:#dc2626;
+                            transition:width 0.6s ease"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;
+                        font-size:11px;color:#6b7280;margin-top:5px">
+                <span>✅ 22 positive &nbsp;(79%)</span>
+                <span>❌ 6 negative &nbsp;(21%)</span>
+                <span>➖ 2 neutral</span>
+            </div>
+        </div>
+
+        <!-- Positive vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#15803d;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                💚 Words used positively
+            </div>
+            <div style="line-height:2"><span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">place <strong>(17)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">time <strong>(16)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">good <strong>(13)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">back <strong>(12)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">come <strong>(11)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">love <strong>(10)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">also <strong>(10)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">make <strong>(9)</strong></span></div>
+        </div>
+
+        <!-- Negative vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#b91c1c;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                🔴 Words used negatively
+            </div>
+            <div style="line-height:2"><span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">place <strong>(9)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">service <strong>(5)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">call <strong>(5)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">order <strong>(5)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">food <strong>(5)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">business <strong>(4)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">never <strong>(4)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">shirt <strong>(4)</strong></span></div>
+        </div>
+
+        <!-- Customer quotes -->
+        <div>
+            <div style="font-size:11px;font-weight:700;color:#374151;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px">
+                💬 Customer voice
+            </div>
+            <blockquote style="background:#f0fdf4;border-left:3px solid #16a34a;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+            <blockquote style="background:#fef2f2;border-left:3px solid #dc2626;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+        </div>
+    </div>
+    <div style="background:#f0fdf4;border:1px solid #22c55e;
+                border-radius:14px;padding:26px;margin-bottom:24px;
+                box-shadow:0 1px 6px rgba(0,0,0,0.06)">
+
+        <!-- Header row: aspect name left, big score right -->
+        <div style="display:flex;justify-content:space-between;
+                    align-items:flex-start;margin-bottom:18px">
+            <div>
+                <h3 style="margin:0 0 4px 0;color:#111827;font-size:17px;
+                           text-transform:capitalize;letter-spacing:0.01em">
+                    value for money
+                </h3>
+                <div style="font-size:12px;color:#6b7280">50 customer mentions</div>
+            </div>
+            <div style="text-align:center;min-width:80px">
+                <div style="font-size:38px;font-weight:800;color:#22c55e;
+                            line-height:1">59%</div>
+                <div style="font-size:10px;color:#6b7280;margin-top:2px;
+                            text-transform:uppercase;letter-spacing:0.05em">
+                    satisfaction
+                </div>
+            </div>
+        </div>
+
+        <!-- Sentiment breakdown bar -->
+        <div style="margin-bottom:18px">
+            <div style="font-size:11px;color:#6b7280;margin-bottom:5px;
+                        text-transform:uppercase;letter-spacing:0.04em">
+                Sentiment Breakdown
+            </div>
+            <div style="display:flex;height:10px;border-radius:5px;
+                        overflow:hidden;background:#e5e7eb">
+                <div style="width:59.2%;background:#16a34a;
+                            transition:width 0.6s ease"></div>
+                <div style="width:40.8%;background:#dc2626;
+                            transition:width 0.6s ease"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;
+                        font-size:11px;color:#6b7280;margin-top:5px">
+                <span>✅ 29 positive &nbsp;(59%)</span>
+                <span>❌ 20 negative &nbsp;(41%)</span>
+                <span>➖ 1 neutral</span>
+            </div>
+        </div>
+
+        <!-- Positive vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#15803d;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                💚 Words used positively
+            </div>
+            <div style="line-height:2"><span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">place <strong>(30)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">great <strong>(17)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">time <strong>(16)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">like <strong>(16)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">make <strong>(14)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">also <strong>(14)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">love <strong>(13)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">good <strong>(13)</strong></span></div>
+        </div>
+
+        <!-- Negative vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#b91c1c;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                🔴 Words used negatively
+            </div>
+            <div style="line-height:2"><span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">place <strong>(22)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">like <strong>(18)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">would <strong>(16)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">want <strong>(15)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">time <strong>(14)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">take <strong>(14)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">food <strong>(13)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">could <strong>(12)</strong></span></div>
+        </div>
+
+        <!-- Customer quotes -->
+        <div>
+            <div style="font-size:11px;font-weight:700;color:#374151;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px">
+                💬 Customer voice
+            </div>
+            <blockquote style="background:#f0fdf4;border-left:3px solid #16a34a;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+            <blockquote style="background:#fef2f2;border-left:3px solid #dc2626;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+        </div>
+    </div>
+    <div style="background:#fffbeb;border:1px solid #d97706;
+                border-radius:14px;padding:26px;margin-bottom:24px;
+                box-shadow:0 1px 6px rgba(0,0,0,0.06)">
+
+        <!-- Header row: aspect name left, big score right -->
+        <div style="display:flex;justify-content:space-between;
+                    align-items:flex-start;margin-bottom:18px">
+            <div>
+                <h3 style="margin:0 0 4px 0;color:#111827;font-size:17px;
+                           text-transform:capitalize;letter-spacing:0.01em">
+                    customer experience
+                </h3>
+                <div style="font-size:12px;color:#6b7280">11 customer mentions</div>
+            </div>
+            <div style="text-align:center;min-width:80px">
+                <div style="font-size:38px;font-weight:800;color:#d97706;
+                            line-height:1">54%</div>
+                <div style="font-size:10px;color:#6b7280;margin-top:2px;
+                            text-transform:uppercase;letter-spacing:0.05em">
+                    satisfaction
+                </div>
+            </div>
+        </div>
+
+        <!-- Sentiment breakdown bar -->
+        <div style="margin-bottom:18px">
+            <div style="font-size:11px;color:#6b7280;margin-bottom:5px;
+                        text-transform:uppercase;letter-spacing:0.04em">
+                Sentiment Breakdown
+            </div>
+            <div style="display:flex;height:10px;border-radius:5px;
+                        overflow:hidden;background:#e5e7eb">
+                <div style="width:54.5%;background:#16a34a;
+                            transition:width 0.6s ease"></div>
+                <div style="width:45.5%;background:#dc2626;
+                            transition:width 0.6s ease"></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;
+                        font-size:11px;color:#6b7280;margin-top:5px">
+                <span>✅ 6 positive &nbsp;(55%)</span>
+                <span>❌ 5 negative &nbsp;(45%)</span>
+                <span>➖ 0 neutral</span>
+            </div>
+        </div>
+
+        <!-- Positive vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#15803d;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                💚 Words used positively
+            </div>
+            <div style="line-height:2"><span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">love <strong>(7)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">time <strong>(6)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">place <strong>(5)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">like <strong>(5)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">shop <strong>(4)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">room <strong>(4)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">hotel <strong>(4)</strong></span> <span style="background:#dcfce7;color:#15803d;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">price <strong>(4)</strong></span></div>
+        </div>
+
+        <!-- Negative vocabulary -->
+        <div style="margin-bottom:14px">
+            <div style="font-size:11px;font-weight:700;color:#b91c1c;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px">
+                🔴 Words used negatively
+            </div>
+            <div style="line-height:2"><span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">watch <strong>(17)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">wait <strong>(7)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">band <strong>(7)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">nicole <strong>(7)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">like <strong>(6)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">store <strong>(6)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">take <strong>(5)</strong></span> <span style="background:#fee2e2;color:#b91c1c;padding:3px 10px;border-radius:20px;font-size:11px;display:inline-block;margin:2px">look <strong>(5)</strong></span></div>
+        </div>
+
+        <!-- Customer quotes -->
+        <div>
+            <div style="font-size:11px;font-weight:700;color:#374151;
+                        text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px">
+                💬 Customer voice
+            </div>
+            <blockquote style="background:#f0fdf4;border-left:3px solid #16a34a;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+            <blockquote style="background:#fef2f2;border-left:3px solid #dc2626;padding:10px 14px;margin:8px 0;border-radius:0 6px 6px 0;font-style:italic;font-size:13px;color:#374151;line-height:1.5">"..."</blockquote>
+        </div>
+    </div>
+
+  <!-- ── Footer ── -->
+  <div style="text-align:center;color:#9ca3af;font-size:12px;
+              margin-top:32px;padding-top:20px;border-top:1px solid #e5e7eb">
+      Generated by Review Intelligence Pipeline &nbsp;·&nbsp;
+      Python · HuggingFace Transformers · NLTK · Pandas
+  </div>
+
+</div>
+</body>
+</html>
