@@ -443,7 +443,8 @@ Return the JSON taxonomy now:"""
         # JSON parse failure — we warn the user and fall back gracefully
         # to the default taxonomy rather than crashing the whole pipeline.
         print(f"\n  ⚠️  Auto-discovery failed: {e}")
-        print("  Falling back to DEFAULT_TAXONOMY — consider setting ANTHROPIC_API_KEY")
+        print("  Falling back to DEFAULT_TAXONOMY.")
+        print("  Check that GOOGLE_API_KEY is set correctly and your Gemini quota is not exhausted.")
         return DEFAULT_TAXONOMY
 
 
@@ -1002,6 +1003,11 @@ class ReviewIntelligencePipeline:
         df = df.dropna(subset=[text_column]).reset_index(drop=True)
         print(f"      {len(df):,} reviews loaded")
 
+        # Add this line right after:  df = df.dropna(subset=[text_column]).reset_index(drop=True)
+        # It creates a standardised 'text' column that all dashboard functions can rely on,
+        # regardless of what the user's original column was called.
+        df['text'] = df[text_column].astype(str)
+        
         # ── Step 1.5: Auto-discover taxonomy if none was explicitly provided ──
         # We check whether the taxonomy is still the default one, which tells us
         # the user did not pass a custom taxonomy to __init__. If that is the case

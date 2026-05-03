@@ -298,6 +298,10 @@ def main():
                         df = df.sample(min(actual_sample, len(df)), random_state=42)
                     df = df.dropna(subset=[text_column]).reset_index(drop=True)
                     st.write(f"   ✅ {len(df):,} reviews loaded")
+                    # Add this line right after:  df = df.dropna(subset=[text_column]).reset_index(drop=True)
+                    # It creates a standardised 'text' column that all dashboard functions can rely on,
+                    # regardless of what the user's original column was called.
+                    df['text'] = df[text_column].astype(str)
                     
                     # Step 1.5: Auto-discover taxonomy
                     used_taxonomy = pipe.taxonomy
