@@ -1,4 +1,3 @@
-```markdown
 # 📊 Review Intelligence Pipeline
 
 > An end-to-end NLP system that transforms raw customer reviews into actionable business intelligence — automatically discovering what product features customers love and hate, then delivering a professional stakeholder dashboard.
